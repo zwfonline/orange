@@ -12,6 +12,21 @@ body {
     background-color: #f4f4f4;
 }
 
+/* 导航链接基础样式 */
+header nav ul li a {
+    text-decoration: none; /* 去掉下划线 */
+    color: white; /* 默认字体颜色 */
+    font-size: 1em; /* 初始字体大小 */
+    transition: color 0.3s ease, font-size 0.3s ease; /* 平滑过渡 */
+}
+
+/* 鼠标悬停时导航按钮的特效 */
+header nav ul li a:hover {
+    color: #ffcc00; /* 鼠标悬停时字体颜色变为浅黄色 */
+    font-size: 1.3em; /* 字体稍微放大 */
+}
+
+
 /* 容器 */
 .container {
     width: 80%;
@@ -59,20 +74,88 @@ main {
 
 /* Hero 区域 */
 .hero {
-    background: url('hero-bg.jpg') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 100px 0;
+    position: relative;
+    height: 600px;
+    width: 70%;
+    margin-left: 15%;
+    overflow: hidden;
+    background-size: cover; /* 背景图片填充容器并保持比例 */
+    background-repeat: no-repeat; /* 禁止图片重复 */
+    background-position: center; /* 图片居中显示 */
 }
 
 .hero h2 {
     font-size: 3em;
     margin-bottom: 20px;
+    color: #ff6600;
 }
 
-.hero p {
-    font-size: 1.5em;
-    margin-bottom: 30px;
+
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 100px 20px;
+    background: rgba(0, 0, 0, 0.5); /* 半透明黑色背景，增强文字对比度 */
+    margin-top: 5%;
+}
+
+
+
+/* 滚动背景动画 */
+@keyframes scroll-background {
+    from {
+        transform: translateX(0); /* 起始位置 */
+    }
+    to {
+        transform: translateX(-50%); /* 左移 50% */
+    }
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: 1;
+    animation: fade-in-out 5s linear infinite; /* 动画效果 */
+}
+
+@keyframes fade-in-out {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+/* Logo 样式 */
+header .logo {
+    text-align: center; /* 居中对齐 */
+    margin-bottom: 10px;
+  
+}
+
+header .logo a {
+    display: inline-block;
+    text-decoration: none; /* 去掉链接下划线 */
+}
+
+header .logo img {
+    max-width: 100px; /* 限制 logo 图片宽度 */
+    height: auto; /* 保持图片宽高比 */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* 添加鼠标悬停动画效果 */
+    border-radius: 100%;
+}
+
+/* 鼠标悬停时 logo 的效果 */
+header .logo a:hover img {
+    transform: scale(1.1); /* 放大效果 */
+    opacity: 0.8; /* 透明度变化 */
 }
 
 .hero .cta-button {
@@ -80,14 +163,17 @@ main {
     background-color: #ff6600;
     color: white;
     padding: 15px 30px;
-    font-size: 1.2em;
+    font-size: 1.2em; /* 按钮字体大小 */
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, font-size 0.3s ease; /* 添加字体变化的过渡效果 */
+    margin-top: 20px;
 }
 
 .hero .cta-button:hover {
-    background-color: #ffcc00;
+    background-color: #ffcc00; /* 背景颜色变化 */
+    transform: scale(1.05); /* 按钮整体放大 */
+    font-size: 1.3em; /* 字体稍微变大 */
 }
 
 /* 关于我们区域 */
@@ -171,12 +257,15 @@ footer {
         margin: 10px 0;
     }
 
+    .hero{width: 100%;
+        margin-left: 0;
+    }
     .hero h2 {
-        font-size: 2.5em;
+        font-size: 1.5em;
     }
 
     .hero p {
-        font-size: 1.2em;
+        font-size: 0.8em;
     }
 
     .services ul {
