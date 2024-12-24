@@ -242,6 +242,199 @@ footer {
     padding: 20px 0;
 }
 
+/* 联系地址和地图部分 */
+.location {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.location h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.location-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* 响应式支持 */
+    gap: 20px; /* 增加子项间距 */
+}
+
+.location-map {
+    flex: 1;
+    max-width: 50%; /* 左侧地图宽度 */
+}
+
+.location-map img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* 圆角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影 */
+}
+
+.location-info {
+    flex: 1;
+    max-width: 45%; /* 右侧信息宽度 */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 信息项间距 */
+}
+
+.location-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 图标与文字间距 */
+    font-size: 1.2em;
+    color: #333;
+}
+
+.location-item i {
+    font-size: 1.5em;
+    color: #ff6600; /* 图标颜色 */
+}
+
+/* 图标样式 */
+.icon-location::before {
+    content: "📍"; /* 使用 Emoji 作为占位符 */
+}
+
+.icon-phone::before {
+    content: "📞"; /* 使用 Emoji 作为占位符 */
+}
+
+.icon-wechat::before {
+    content: "🟢"; /* 使用 Emoji 作为占位符，微信图标可换成图片 */
+}
+
+.business-content {
+    padding: 50px 0;
+    background-color: #f9f9f9; /* 背景颜色 */
+    text-align: center;
+}
+
+.business-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap; /* 支持响应式，保证小屏幕时内容能换行 */
+}
+
+.service-item .service-image {
+    flex: 1;
+    max-width: 40%; /* 图片最大宽度 */
+}
+
+.service-item .service-image img {
+    width: 100%; /* 图片宽度占满容器 */
+    height: 400px; /* 固定图片高度为 200px */
+    object-fit: cover; /* 图片适应容器并裁剪 */
+    border-radius: 10px; /* 圆角效果 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影 */}
+
+.service-item .service-text {
+    flex: 1;
+    max-width: 55%; /* 文字部分最大宽度 */
+    text-align: left;
+    padding: 0 20px;
+}
+
+.service-item .service-text h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #ff6600; /* 主题颜色 */
+}
+
+.service-item .service-text p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Timeline Section */
+.teacher-timeline {
+    position: relative;
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.teacher-timeline .timeline-line {
+    position: absolute;
+    top: 0;
+    left: 50%; /* 时间线居中 */
+    width: 4px;
+    height: calc(100% ); /* 延长时间线，确保覆盖所有教师内容 */
+    background-color: #ddd;
+    z-index: 1;
+    transform: translateX(-50%);
+}
+
+.teacher-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.teacher-item .teacher-photo {
+    flex: 1;
+    text-align: center;
+    z-index: 2;
+}
+
+.teacher-item .teacher-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.teacher-item .teacher-info {
+    flex: 2;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    position: relative;
+}
+
+.teacher-item.left .teacher-info {
+    text-align: left;
+    margin-right: auto;
+}
+
+.teacher-item.right .teacher-info {
+    text-align: left;
+    margin-left: auto;
+}
+
+.teacher-item.left {
+    flex-direction: row;
+}
+
+.teacher-item.right {
+    flex-direction: row-reverse;
+}
+
+/* 圆点标记 */
+.teacher-item::before {
+    display: none;
+}
+
+
+
 /* 响应式设计 */
 @media (max-width: 768px) {
     header .logo {
@@ -268,16 +461,82 @@ footer {
         font-size: 0.8em;
     }
 
-    .services ul {
-        flex-direction: column;
+    .service-item {
+        flex-direction: column; /* 小屏幕下内容垂直排列 */
+        text-align: center; /* 居中对齐 */
+        padding: 15px; /* 内边距缩小 */
     }
 
-    .services ul li {
-        margin: 10px 0;
-        flex: 1 1 100%;
+    .service-item .service-image {
+        max-width: 100%; /* 图片宽度调整为100% */
     }
 
-    .services ul li a {
+    .service-item .service-image img {
+        height: 200px; /* 小屏幕下图片高度为100px */
+    }
+
+    .service-item .service-text {
+        max-width: 100%; /* 文本宽度调整为100% */
+        padding: 10px 0;
+    }
+
+    .service-item .service-text h3 {
+        font-size: 1.5em; /* 标题字号缩小 */
+    }
+
+    .service-item .service-text p {
+        font-size: 1em; /* 文字字号缩小 */
+    }
+
+    .location-content {
+        flex-direction: column; /* 垂直排列 */
+        align-items: center;
+    }
+
+    .location-map,
+    .location-info {
+        max-width: 100%; /* 子项宽度调整为 100% */
+    }
+
+    .location-info {
+        text-align: center; /* 信息居中 */
+    }
+
+    .teacher-timeline .timeline-line {
+        display: none; /* 隐藏时间线 */
+    }
+
+    .teacher-item::before {
+        display: none; /* 隐藏圆点 */
+    }
+
+    .teacher-item {
+        flex-direction: column !important; /* 垂直排列 */ 
+        align-items: center; /* 居中对齐 */
+        text-align: center; /* 文本居中 */
+        margin-bottom: 80px; /* 增加块之间的间距 */
+    }
+
+    .teacher-item .teacher-photo {
+        margin-bottom: 20px; /* 增加头像与文字之间的间距 */
+        display: flex;
+        justify-content: center;
+        align-items: center; /* 确保图片完全居中 */
+        width: 100%; /* 确保图片容器宽度一致 */
+    }
+
+    .teacher-item .teacher-photo img {
+        width: 120px; /* 调整头像宽度 */
+        height: 120px; /* 调整头像高度 */
+        border-radius: 50%; /* 圆形裁剪 */
+        object-fit: cover; /* 确保图片不变形 */
+    }
+
+    .teacher-item .teacher-info {
+        text-align: center; /* 文本居中 */
         padding: 15px;
+        max-width: 90%; /* 限制文字块宽度，防止过宽 */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 增加阴影效果 */
     }
+
 }
